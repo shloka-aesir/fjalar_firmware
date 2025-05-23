@@ -42,7 +42,7 @@ int main(void) {
 		return -1;
 	}
 
-	zusb_enable(NULL);          /* start USB-CDC */
+	usb_enable(NULL);          /* start USB-CDC */
     printk("USB-CDC ready\n");
 
 	printk("Started\n");
