@@ -315,7 +315,7 @@ void periodic_thread(void *p1, void *p2, void *p3) {
             pos_kf.X_data[3], pos_kf.X_data[4], pos_kf.X_data[5], // vx vy vz
             pos_kf.X_data[6], pos_kf.X_data[7], pos_kf.X_data[8], // ax ay az
             att_kf.X_data[0], att_kf.X_data[1], att_kf.X_data[3], // roll pitch yaw
-            pos_kf.pressure, pos_kf.expected_apogee); // pressure
+            pos_kf.pressure, pos_kf.expected_apogee, pos_kf.P_data[20]); // pressure
 
         k_msleep(10); // 10 ms = 100 Hz
     }
@@ -400,7 +400,7 @@ void flight_state_thread(fjalar_t *fjalar, void *p2, void *p1) {
                 drag_update(&pos_kf, &att_kf, &aerodynamics); 
 
                 if (pos_kf.X_data[2]<10 && filter_get_acceleration(&pos_kf)<5){
-                    attitude_filter_accelerometer_ground(&att_kf, &pos_kf, ax, ay, az, imu.t); //only used pre launch
+                    //attitude_filter_accelerometer_ground(&att_kf, &pos_kf, ax, ay, az, imu.t); //only used pre launch
                 }
                 if (pos_kf.X_data[2]>10 && is_thrust_over(&pos_kf, &att_kf, &aerodynamics)){
                     //void attitude_filter_accelerometer_cruise(&att_kf, &pos_kf, ax, ay, az, time);

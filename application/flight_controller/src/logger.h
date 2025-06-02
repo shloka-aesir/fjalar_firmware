@@ -15,7 +15,7 @@ void csv_log(CSVLogger *logger,
              double vx, double vy, double vz,
              double ax, double ay, double az,
              double rx, double ry, double rz,
-             double p,  double expected_apogee);
+             double p,  double expected_apogee, double altitude_variance);
 void csv_close(CSVLogger *logger);
 
 extern CSVLogger logger;

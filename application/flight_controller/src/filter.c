@@ -21,6 +21,7 @@ TODO:
 */
 void position_filter_init(position_filter_t *pos_kf, init_t *init) {
     float process_variance = 0.01;
+    /*
     float ax_variance = 0.01;
     float ay_variance = 0.01;
     float az_variance = 0.01;
@@ -28,8 +29,9 @@ void position_filter_init(position_filter_t *pos_kf, init_t *init) {
     float lon_variance = 0.001;
     float lat_variance = 0.001;
     float alt_variance = 0.001;
+    */
 
-    /*
+    
     float ax_variance = init->var_ax;
     float ay_variance = init->var_ay;
     float az_variance = init->var_az;
@@ -37,7 +39,7 @@ void position_filter_init(position_filter_t *pos_kf, init_t *init) {
     float lon_variance = init->var_lon;
     float lat_variance = init->var_lat;
     float alt_variance = init->var_alt;
-    */
+    
 
 
     float P_init[81] = {
@@ -455,20 +457,22 @@ void Pmtx_analysis(position_filter_t *pos_kf){
 // Attitude Filter
 void attitude_filter_init(attitude_filter_t *att_kf, init_t *init) {
     float process_variance = 0.01;
+    /*
     float ax_variance = 0.03;
     float ay_variance = 0.03;
     float az_variance = 0.03;
     float gx_variance = 0.03;
     float gy_variance = 0.03;
     float gz_variance = 0.03;
-    /*
+    */
+    
     float ax_variance = init->var_ax;
     float ay_variance = init->var_ay;
     float az_variance = init->var_az;
     float gx_variance = init->var_gx;
     float gy_variance = init->var_gy;
     float gz_variance = init->var_gz;
-    */
+    
 
     float P_init[9] = {
         process_variance, 0, 0,

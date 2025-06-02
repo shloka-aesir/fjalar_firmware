@@ -42,8 +42,6 @@ int main(void) {
 		return -1;
 	}
 
-	usb_enable(NULL);          /* start USB-CDC */
-    printk("USB-CDC ready\n");
 
 	printk("Started\n");
 	fjalar_god.sudo = false;
