@@ -8,6 +8,7 @@
 #include "sensors.h"
 #include "filter.h"
 #include "aerodynamics.h"
+#include "actuation.h"
 
 LOG_MODULE_REGISTER(flight, CONFIG_APP_FLIGHT_LOG_LEVEL);
 
@@ -322,6 +323,12 @@ void periodic_thread(void *p1, void *p2, void *p3) {
 }
 
 void flight_state_thread(fjalar_t *fjalar, void *p2, void *p1) {
+    // Njördur deploy wings
+    // if we are ascending (vz>0) [we really need a state machine], and if the difference between expected apogee and current altitude is 10 m
+    if (pos_kf.X_data[5]>0 && (pos_kf.expected_apogee - pos_kf.X_data[2])<10){
+        fjalar->deploy_wings = 1;
+    };
+
     struct k_poll_event events[2] = {
         K_POLL_EVENT_INITIALIZER(K_POLL_TYPE_MSGQ_DATA_AVAILABLE,
                                         K_POLL_MODE_NOTIFY_ONLY,

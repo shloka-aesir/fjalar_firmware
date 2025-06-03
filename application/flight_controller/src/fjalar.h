@@ -42,6 +42,7 @@ typedef struct {
     bool pyro1_sense;
     bool pyro2_sense;
     bool pyro3_sense;
+    bool deploy_wings;
 
     int new_x_index;
     int new_y_index;
