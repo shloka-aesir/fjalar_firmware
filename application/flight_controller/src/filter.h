@@ -36,7 +36,7 @@ typedef struct position_filter {
 typedef struct attitude_filter {
     zsl_real_t P_data[9];
     struct zsl_mtx P;
-    zsl_real_t X_data[9];
+    zsl_real_t X_data[3];
     struct zsl_mtx X;
     zsl_real_t Q_data[9];
     struct zsl_mtx Q;
